@@ -5,8 +5,8 @@
 #include <vector>
 #include "Transaction.h"
 #include <algorithm>
-#include <fstream>
-#include <iterator>
+#include <stdint.h>
+#include <chrono>
 
 class Block
 {
@@ -14,17 +14,15 @@ private:
 	unsigned int blockid;
 	BlockHeader* header;
 	std::vector<Transaction> *transactions;
+	uint64_t timestamp;
 
 
 public:
-	Block(std::vector<Transaction> &transactions); // pass objects by reference
+	Block(BlockHeader* header, std::vector<Transaction>& transactions);
 	~Block();
 
 	unsigned int getBlockid();
-	void getHeaderDetails();
-	void printTransactions();
 	void printBlockDetails();
-
-	//override the cout << operator
-
+	uint64_t getTimestamp();
 };
+

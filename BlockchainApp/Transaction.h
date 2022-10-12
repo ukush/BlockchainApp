@@ -1,17 +1,19 @@
 #pragma once
 #include <string>
+#include <iostream>
 
 class Transaction
 {
 private:
 	int txid;
 	int amount;
+	int fee;
 	std::string sig;
 
 public:
-	Transaction(int amount, std::string sig);
+	Transaction(int amount, float fee, std::string sig);
 	~Transaction();
 
-	int getTxid();
+	void getTransactionDetails();
 
 };

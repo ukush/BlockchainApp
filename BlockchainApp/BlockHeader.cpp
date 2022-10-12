@@ -1,7 +1,10 @@
 #include "BlockHeader.h"
 
-BlockHeader::BlockHeader() : version(1.0), previousBlockHash(""), difficulty(12345), nonce(1234567)
+
+BlockHeader::BlockHeader(unsigned int version, unsigned int hash, unsigned int difficulty, unsigned int nonce)
+	: version(version), previousBlockHash(hash), difficulty(difficulty), nonce(nonce)
 {
+
 }
 
 BlockHeader::~BlockHeader()
@@ -14,7 +17,7 @@ int BlockHeader::getVersion()
 	return version;
 }
 
-std::string  BlockHeader::getPreviousBlockHash()
+unsigned int BlockHeader::getPreviousBlockHash()
 {
 	return previousBlockHash;
 }
@@ -25,15 +28,4 @@ unsigned int  BlockHeader::getDifficulty()
 unsigned int  BlockHeader::getNonce()
 {
 	return nonce;
-}
-
-std::string BlockHeader::getHeaderInputForHash()
-{
-	return std::to_string(version) + previousBlockHash + std::to_string(difficulty) + std::to_string(nonce);	
-}
-
-std::string BlockHeader::calculatePreviousBlockHash()
-{
-	std::string hashInput = getHeaderInputForHash();
-	return hashInput + "sdocvnsud;swafaws";
 }
